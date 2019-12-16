@@ -1,9 +1,9 @@
 
-from numpy.distutils.fcompiler import none
+
 
 
 class Customer:
-    def __init__(self, cust_ID = None, fname = "", lname = "", company = "", street = "", city = "", state = "", zipcode = "", cust_name = "", cust_fulladdress = ""):
+    def __init__(self, cust_ID, fname, lname, company, street, city, state, zipcode):
         self.__cust_ID = cust_ID
         self.__fname = fname
         self.__lname = lname
@@ -12,81 +12,59 @@ class Customer:
         self.__city = city
         self.__state = state
         self.__zipcode = zipcode
-        if cust_name is "":
-            self.cust_name = fname + " " + lname
-        if cust_fulladdress is "":
-            if company is "":
-                return street + "\n" + city + ", " + state + " " \
-                       + zipcode
-            else:
-                return company + "\n" + street + "\n" + city + ", " + state + " " \
-                       + zipcode
-
-
-
 
 
     @property
-    def getcustomerid(self):
+    def cust_ID(self):
         return self.__cust_ID
 
     @property
-    def getfname(self):
+    def fname(self):
         return self.__fname
 
     @property
-    def getlname(self):
+    def lname(self):
         return self.__lname
 
     @property
-    def getcompany(self):
+    def company(self):
         return self.__company
 
     @property
-    def getstreet(self):
+    def street(self):
         return self.__street
 
     @property
-    def getcity(self):
+    def city(self):
         return self.__city
 
     @property
-    def getstate(self):
+    def state(self):
         return self.__state
 
     @property
-    def getzipcode(self):
+    def zipcode(self):
         return self.__zipcode
 
     @property
-    def get_cust_name(self):
-        if self.cust_name is "":
-            self.cust_name = self.getfname + " " + self.getlname
-        return self.cust_name
+    def cust_name(self):
+        return str(self.fname) + " " + str(self.lname)
 
     @property
-    def getcust_fulladdress(self):
-        return self.cust_fulladdress
-
-    @property
-    def __get__(self):
-        if self.cust_name is None:
-            return self.getfname + " " + self.getlname
-
-  #  def getcust_name(self, __fname, __lastname):
-  #      cust_name = str(self.__fname) + " " + str(self.__lname)
-  #      return cust_name
-
-
-    def getcust_fulladdress(self, __street, __city, __state, __zipcode, __company):
-        if __company is none:
-            return str(self.__street) + "\n" + str(self.__city) + ", " + self.__state + " " \
+    def cust_fulladdress(self):
+        if self.__company is "":
+            return str(self.__street) + "\n" + str(self.__city) + ", " + str(self.__state) + " " \
                    + str(self.__zipcode)
         else:
-            return str(self.__company) + "\n" + str(self.__street) + "\n" + str(self.__city) + ", " \
-                   + self.__state + " " + str(self.__zipcode)
+            return str(self.__company) +"\n" + str(self.__street) + "\n" + str(self.__city) + ", " + str(self.__state) + " " + str(self.__zipcode)
 
- #   @customerObject.setter
- #   def __str__(self, cust_name, cust_fulladdress):
-  #      return str(self.cust_name) + "\n" + str(self.cust_fulladdress)
+    @property
+    def customer(self):
+        return str(self.cust_name) + "\n" + str(self.cust_fulladdress)
+
+    def __str__(self):
+        return str(self.cust_name) + "\n" + str(self.cust_fulladdress)
+
+    def __call__(self):
+        return str(self.cust_name) + "\n" + str(self.cust_fulladdress)
 
